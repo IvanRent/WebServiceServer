@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.test.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.test.org" xmlns:intf="http://service.test.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.test.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="operacionesMulti">
+    <complexType>
+     <sequence>
+      <element name="c" type="xsd:int"/>
+      <element name="d" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="operacionesMultiResponse">
+    <complexType>
+     <sequence>
+      <element name="operacionesMultiReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="operacionSuma">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="operacionSumaResponse">
+    <complexType>
+     <sequence>
+      <element name="operacionSumaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="operacionSumaRequest">
+
+      <wsdl:part element="impl:operacionSuma" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="operacionesMultiRequest">
+
+      <wsdl:part element="impl:operacionesMulti" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="operacionSumaResponse">
+
+      <wsdl:part element="impl:operacionSumaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="operacionesMultiResponse">
+
+      <wsdl:part element="impl:operacionesMultiResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ServiceOperaciones">
+
+      <wsdl:operation name="operacionesMulti">
+
+         <wsdl:input message="impl:operacionesMultiRequest" name="operacionesMultiRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:operacionesMultiResponse" name="operacionesMultiResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="operacionSuma">
+
+         <wsdl:input message="impl:operacionSumaRequest" name="operacionSumaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:operacionSumaResponse" name="operacionSumaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceOperacionesSoapBinding" type="impl:ServiceOperaciones">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="operacionesMulti">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="operacionesMultiRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="operacionesMultiResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="operacionSuma">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="operacionSumaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="operacionSumaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceOperacionesService">
+
+      <wsdl:port binding="impl:ServiceOperacionesSoapBinding" name="ServiceOperaciones">
+
+         <wsdlsoap:address location="http://localhost:7171/WebServiceServer/services/ServiceOperaciones"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,34 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceOperacionesService WSDL service -->
+
+  <service name="ServiceOperaciones" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.test.org"/>
+      <parameter name="wsdlServiceElement" value="ServiceOperacionesService"/>
+      <parameter name="schemaQualified" value="http://service.test.org"/>
+      <parameter name="wsdlServicePort" value="ServiceOperaciones"/>
+      <parameter name="className" value="org.test.service.ServiceOperacionesSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ServiceOperaciones"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="operacionesMulti" qname="operNS:operacionesMulti" xmlns:operNS="http://service.test.org" returnQName="retNS:operacionesMultiReturn" xmlns:retNS="http://service.test.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:c" xmlns:pns="http://service.test.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:d" xmlns:pns="http://service.test.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="operacionSuma" qname="operNS:operacionSuma" xmlns:operNS="http://service.test.org" returnQName="retNS:operacionSumaReturn" xmlns:retNS="http://service.test.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:a" xmlns:pns="http://service.test.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:b" xmlns:pns="http://service.test.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="operacionesMulti operacionSuma"/>
+
+  </service>
+</deployment>
